@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sh_hello_world,access_sh_hello_world,model_sh_hello_world,base.group_user,1,1,1,1
+access_sh_hello_world_category,access_sh_hello_world_category,model_sh_hello_world_category,base.group_user,1,1,1,1
+access_sh_hello_world_tag,access_sh_hello_world_tag,model_sh_hello_world_tag,base.group_user,1,1,1,1

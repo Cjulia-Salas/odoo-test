@@ -1,0 +1,33 @@
+version: '3.1'
+services:
+  db_odoo_test:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+    restart: always
+
+  odoo:
+    build: .
+    depends_on:
+      - db_odoo_test
+    ports:
+      - "8069:8069" # Puerto web de Odoo
+      - "8072:8072" # Puerto para Live Chat / Longpolling
+      - "5678:5678" # Puerto para debugpy
+    volumes:
+      # Mapea tu archivo de configuración
+      - ./config:/etc/odoo
+      # Mapea tu carpeta de módulos personalizados
+      - ./addons:/mnt/extra-addons
+      # Mapea una carpeta para guardar sesiones y filestore
+      - odoo-web-data:/var/lib/odoo
+    command: python3 -m debugpy --listen 0.0.0.0:5678 /usr/bin/odoo --config /etc/odoo/odoo.conf
+    restart: always
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:

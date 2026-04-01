@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_hello_world" model="ir.actions.report">
+        <field name="name">Imprimir Registro SH</field>
+        <field name="model">sh.hello.world</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">HelloWorld.report_hello_world_template</field>
+        <field name="report_file">HelloWorld.report_hello_world_template</field>
+        <field name="print_report_name">'Registro - %s' % (object.name)</field>
+    </record>
+
+    <template id="report_hello_world_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">Detalle del Registro</h2>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-6">
+                                <strong>Nombre:</strong> <span t-field="doc.name"/><br/>
+                                <strong>Estado:</strong> <span t-field="doc.state"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>Responsable:</strong> <span t-field="doc.user_id.name"/><br/>
+                                <em>"<span t-field="doc.user_phrase"/>"</em>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h4>Descripción:</h4>
+                            <div t-field="doc.description_larga"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
