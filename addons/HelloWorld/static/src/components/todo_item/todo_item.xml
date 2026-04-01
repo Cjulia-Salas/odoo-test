@@ -1,0 +1,34 @@
+<templates xml:space="preserve">
+    <t t-name="HelloWorld.TodoItem">
+    <!--p-5, card, d-flex? Son clases de Bootstrap.-->
+        <div class="p-5">
+            <div t-attf-class="card shadow {{state.colorClass}} text-white" style="max-width: 450px; border: none;">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-3">Registros de <t t-esc="state.username"/></h5>
+                    
+                    <div class="bg-white text-dark rounded p-3 mb-3" style="min-height: 100px;">
+                        <h6 class="border-bottom pb-2">Últimos registros:</h6>
+                        
+                        <p t-if="state.records.length === 0" class="text-muted small">No hay datos que mostrar.</p>
+                        
+                        <ul class="list-unstyled mb-0">
+                            <t t-foreach="state.records" t-as="record" t-key="record.id">
+                                <li class="py-1 border-bottom-0">
+                                    <i class="fa fa-check-circle text-primary me-2">.</i>
+                                    <t t-esc="record.name"/>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small>Total: <t t-esc="state.totalRecords"/></small>
+                        <button class="btn btn-light btn-sm fw-bold" t-on-click="finishTask">
+                            <t t-esc="state.status"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
