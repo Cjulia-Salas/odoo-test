@@ -1,0 +1,7 @@
+id,name
+tag_urgente,Urgente
+tag_prioritario,Prioritario
+tag_reunion,Reunión
+tag_cliente,Cliente VIP
+tag_error,Bug / Error
+tag_mejoras,Mejoras
