@@ -1,4 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sh_hello_world,access_sh_hello_world,model_sh_hello_world,base.group_user,1,1,1,1
-access_sh_hello_world_category,access_sh_hello_world_category,model_sh_hello_world_category,base.group_user,1,1,1,1
-access_sh_hello_world_tag,access_sh_hello_world_tag,model_sh_hello_world_tag,base.group_user,1,1,1,1
+access_sh_hello_world_user,sh.hello.world.user,model_sh_hello_world,group_hw_user,1,1,1,0
+access_sh_hello_world_admin,sh.hello.world.admin,model_sh_hello_world,group_hw_admin,1,1,1,1
+access_sh_hello_world_tag_user,sh.hello.world.tag.user,model_sh_hello_world_tag,group_hw_user,1,1,1,0
+access_sh_hello_world_tag_admin,sh.hello.world.tag.admin,model_sh_hello_world_tag,group_hw_admin,1,1,1,1
+access_sh_hello_world_cat_user,sh.hello.world.category.user,model_sh_hello_world_category,group_hw_user,1,1,1,0
+access_sh_hello_world_cat_admin,sh.hello.world.category.admin,model_sh_hello_world_category,group_hw_admin,1,1,1,1

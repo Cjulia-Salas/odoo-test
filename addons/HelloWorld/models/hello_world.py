@@ -1,11 +1,11 @@
-from odoo import models, fields, api
-from odoo.models import Constraint
-from odoo.exceptions import ValidationError
+from odoo import models, fields, api # type: ignore
+from odoo.models import Constraint # type: ignore
+from odoo.exceptions import ValidationError # type: ignore
 
 class HelloWorld(models.Model):
     _name = "sh.hello.world"
     _description = "Modelo Principal"
-
+    
     name = fields.Char(string="Nombre", required=True)
     boolean_field = fields.Boolean(string="Activo", default=False)
     description_larga = fields.Text(string="Descripcion")
@@ -34,7 +34,7 @@ class HelloWorld(models.Model):
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('locked', 'Bloqueado'),
-    ], string='Estado', default='draft', tracking=True)
+    ], string='Estado', default='draft', tracking=False)
 
     # Función para bloquear
     def action_lock(self):

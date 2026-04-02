@@ -7,10 +7,13 @@
     "category": "Salas",
     "depends": ["base", "web"],
     "data": [
+        "security/security_data.xml",
         "security/ir.model.access.csv",
-        'reports/hello_world_report.xml',
         "views/hello_world_views.xml",
         "views/res_users.xml",
+        'data/sh_hello_world_data.xml',
+        'data/sh.hello.world.tag.csv',
+        'reports/hello_world_report.xml',
     ],
     'assets': {
         'web.assets_backend': [

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="cat_work" model="sh.hello.world.category">
+            <field name="name">Trabajo</field>
+        </record>
+
+        <record id="cat_personal" model="sh.hello.world.category">
+            <field name="name">Personal</field>
+        </record>
+
+        <record id="res_ejemplo_1" model="sh.hello.world">
+            <field name="name">Mi primera tarea automática</field>
+            <field name="category_id" ref="cat_work"/>
+            <field name="state">draft</field>
+        </record>
+    </data>
+</odoo>
