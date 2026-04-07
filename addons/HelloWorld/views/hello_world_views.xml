@@ -19,39 +19,44 @@
         <field name="name">sh.hello.world.form</field>
         <field name="model">sh.hello.world</field>
         <field name="arch" type="xml">
-            <form>
-                <header>
-                    <button name="action_lock" string="Bloquear" type="object" class="btn-primary" invisible="state != 'draft'"/>
-                    <button name="action_unlock" string="Desbloquear" type="object" class="btn-secondary" invisible="state != 'locked'"/>
-                    <button name="%(HelloWorld.action_report_hello_world)d" 
-                            string="Imprimir PDF" 
-                            type="action" 
-                            class="btn-info"
-                            invisible="state == 'draft'"/>
-                    <field name="state" widget="statusbar"/>
-                </header>
-                <sheet>
-                    <group name="resumen" string="Resumen de Registro">
+            <form string="Hello World">
+                <div class="o_form_sheet_bg" style="max-width: 100% !important; width: 100% !important;">
+                    <header class="border-bottom mb-3 p-2 d-flex justify-content-between align-items-center" style="background: #f8f9fa;">
+                        <div>
+                            <button name="action_lock" string="Bloquear" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                            <button name="action_unlock" string="Desbloquear" type="object" class="btn-secondary" invisible="state != 'locked'"/>
+                        </div>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,locked"/>
+                    </header>
+
+                    <sheet>
+                        <div class="oe_title" style="max-width: 100% !important; width: 100% !important;">
+                            <label for="name" string="Nombre del Registro"/>
+                            <h1><field name="name" placeholder="Ej. Mi tarea..." readonly="state == 'locked'"/></h1>
+                        </div>
                         <group>
-                            <field name="name" readonly="state == 'locked'"/>
-                            <field name="user_id" readonly="state == 'locked'"/>
-                            <field name="user_phrase" italic="1"/>
-                            <field name="boolean_field" readonly="state == 'locked'"/>
+                            <group string="Datos de Usuario">
+                                <field name="user_id" readonly="state == 'locked'"/>
+                                <field name="user_phrase" italic="1"/>
+                            </group>
+                            <group string="Configuración">
+                                <field name="category_id" readonly="state == 'locked'"/>
+                                <field name="tag_count"/>
+                            </group>
                         </group>
-                        <group>
-                            <field name="category_id" readonly="state == 'locked'"/>
-                            <field name="tag_count" string="Total Etiquetas"/>
-                        </group>
-                    </group>
-                    <notebook>
-                        <page string="Descripción">
-                            <field name="description_larga" readonly="state == 'locked'"/>
-                        </page>
-                        <page string="Etiquetas">
-                            <field name="tag_ids" widget="many2many_tags" readonly="state == 'locked'"/>
-                        </page>
-                    </notebook>
-                </sheet>
+                        <notebook>
+                            <page string="Descripción">
+                                <field name="description_larga" readonly="state == 'locked'"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                    <div class="oe_chatter" style="max-height: 450px; overflow-y: auto; background: white; margin-top: 20px; border-top: 1px solid #dee2e6;">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </div>
             </form>
         </field>
     </record>

@@ -5,7 +5,7 @@
     "author": "Salas",
     "website": "https://salas.plus",
     "category": "Salas",
-    "depends": ["base", "web"],
+    "depends": ["base", "web", "mail"],
     "data": [
         "security/security_data.xml",
         "security/ir.model.access.csv",
